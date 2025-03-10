@@ -1,0 +1,52 @@
+function calcularConta() {
+  // Lendo os dados de entrada
+  const sexo = prompt("Informe o sexo do cliente (F para feminino, M para masculino):").toUpperCase();
+  const qtdCervejas = parseInt(prompt("Quantas cervejas foram consumidas?"));
+  const qtdRefrigerantes = parseInt(prompt("Quantos refrigerantes foram consumidos?"));
+  const qtdEspetinhos = parseInt(prompt("Quantos espetinhos foram consumidos?"));
+
+  // Preços dos itens
+  const precoIngressoHomem = 10;
+  const precoIngressoMulher = 8;
+  const precoCerveja = 5;
+  const precoRefrigerante = 3;
+  const precoEspetinho = 7;
+  const taxaCouvert = 4;
+
+  // Calculando o total de consumo
+  const totalCervejas = qtdCervejas * precoCerveja;
+  const totalRefrigerantes = qtdRefrigerantes * precoRefrigerante;
+  const totalEspetinhos = qtdEspetinhos * precoEspetinho;
+
+  // Calculando o total de consumo no bar
+  const totalConsumo = totalCervejas + totalRefrigerantes + totalEspetinhos;
+
+  // Verificando o ingresso de acordo com o sexo
+  let ingresso = 0;
+  if (sexo === 'M') {
+    ingresso = precoIngressoHomem;
+  } else if (sexo === 'F') {
+    ingresso = precoIngressoMulher;
+  } else {
+    alert("Sexo inválido. Informe 'M' para masculino ou 'F' para feminino.");
+    return;
+  }
+
+  // Verificando se a taxa de couvert artístico deve ser cobrada
+  let couvert = totalConsumo > 30 ? 0 : taxaCouvert;
+
+  // Calculando o total a pagar
+  const totalAPagar = ingresso + totalConsumo + couvert;
+
+  // Exibindo o relatório
+  console.log("Relatório de consumo:");
+  console.log("Ingresso: R$ " + ingresso);
+  console.log("Cervejas: R$ " + totalCervejas);
+  console.log("Refrigerantes: R$ " + totalRefrigerantes);
+  console.log("Espetinhos: R$ " + totalEspetinhos);
+  console.log("Couvert Artístico: R$ " + couvert);
+  console.log("Total a pagar: R$ " + totalAPagar.toFixed(2));
+}
+
+// Chamando a função para calcular a conta
+calcularConta();
